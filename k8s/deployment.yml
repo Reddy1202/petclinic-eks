@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-jquery
+  namespace: jquery
+spec:
+  selector:
+    matchLabels:
+      app: jquery
+  template:
+    metadata:
+      labels:
+        app: jquery
+    spec:
+      containers:
+      - name: jquery
+        image: 819503999305.dkr.ecr.us-east-2.amazonaws.com/jquery3:15
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
